@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Поиск</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
+    <link  rel="stylesheet" type="text/css" href="{% static "build/css/main.min.css" %}" media="screen"/>
+</head>
+<body class="">
+    <!-- AJAX-поиск по названию камня -->
+    <div class="container" >
+        <div class="smart-search__search">
+            <div class="smart-search__search-text"><span class="js-text-insert">Найдите письмо через поиск</span><div class="smart-search__search-icon icon--search"></div></div>
+            <div class="smart-search__search-wrap">
+                <input type="text" placeholder="Начать поиск..." class="form-control smart-search__search-input" data-search-input  data-ajax-url="{% url 'search' %}"/>
+            </div>
+            <div class="smart-search__search-result"></div>
+        </div>
+    </div>
+
+    {% verbatim %}
+        <div class="mustache-search-results" style="display: none">
+            {{^empty}}
+                <p>Найдено результатов: {{ count }}</p>
+            {{/empty}}
+
+            <ul class="list-group results-list">
+                {{#items}}
+                    <li class="list-group-item result">
+                        <div>Дата: {{ date }}</div>
+                        <div>От: {{ from }}</div>
+                        <div>Тема: {{{ subject }}}</div>
+                        <div>Сообщение: {{{ msg }}}</div>
+                    </li>
+                {{/items}}
+            </ul>
+            {{#query}}
+                {{^items}}
+                    <p>По запросу <strong>{{ query }}</strong> ничего не найдено.</p>
+                {{/items}}
+            {{/query}}
+
+            {{^empty}}
+                <hr class="mb-3">
+                <button type="button" class="btn btn-primary" data-save-zip>Сохранить результаты</button>
+            {{/empty}}
+        </div>
+    {% endverbatim %}
+
+    <script type="text/javascript" src="{% static "build/js/libs.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "build/js/scripts.min.js" %}"></script>
+</body>
+</html>

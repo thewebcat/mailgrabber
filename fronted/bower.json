@@ -1,0 +1,23 @@
+{
+  "name": "mailgrabber",
+  "homepage": "https://github.com/thewebcat",
+  "authors": [
+    "kot <borisov.ks@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "mustache.js": "mustache#^2.3.0",
+    "moment": "^2.22.0",
+    "jszip": "Stuk/jszip#^3.1.5"
+  }
+}
