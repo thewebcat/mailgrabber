@@ -108,5 +108,5 @@ venv.bak/
 
 # my definetions
 .idea
-fronted/src/libs/
+frontend/src/libs/
 node_modules
