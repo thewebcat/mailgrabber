@@ -13,13 +13,13 @@ from email_settings.models import EmailSetting
 es = Elasticsearch()
 
 
-def delete_index():
-    es.indices.delete(index='mailer')
+def delete_index(index='mailer'):
+    es.indices.delete(index=index)
 
 
-def create_index():
+def create_index(index='mailer'):
     es.indices.create(
-        index='mailer',
+        index=index,
         body={
             "settings": {
                 "analysis": {
@@ -89,7 +89,7 @@ def email_getter():
         assert status == 'OK', 'Connection error {}'.format(msgs)
 
         # убрать отладочный email
-        _, data = conn.search(None, '(UNSEEN)', 'FROM borisov.ks@gmail.com SUBJECT "{}"'.format(item.tag))
+        _, data = conn.search(None, '(UNSEEN)', 'SUBJECT "{}"'.format(item.tag))
 
         for i in data[0].split():
             _, message_data = conn.fetch(i, '(RFC822)')
@@ -125,8 +125,8 @@ def email_getter():
         conn.logout()
 
 
-def insert_to_es(emails):
+def insert_to_es(emails, index='mailer'):
     for item in emails:
         mail_id = item['id']
         del item['id']
-        es.index(index='mailer', doc_type='mail', id=mail_id, body=item)
+        es.index(index=index, doc_type='mail', id=mail_id, body=item)

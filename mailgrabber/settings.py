@@ -129,6 +129,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "mailgrabber/static"),
 ]
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# USE_DJANGO_SEND_MAIL = True
+# SERVER_EMAIL = 'test.constantin@yandex.ru'
+# DEFAULT_FROM_EMAIL = 'test.constantin@yandex.ru'
+# EMAIL_HOST = 'smtp.yandex.ru'
+# EMAIL_HOST_USER = 'test.constantin@yandex.ru'
+# EMAIL_HOST_PASSWORD = 'u7lAG8Nq8i'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
 # REDIS related settings
 REDIS_HOST = 'localhost'
 REDIS_PORT = '6379'
