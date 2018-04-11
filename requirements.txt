@@ -1,0 +1,11 @@
+amqp==2.2.2
+billiard==3.5.0.3
+celery==4.1.0
+decorator==4.2.1
+Django==2.0.4
+elasticsearch==6.2.0
+kombu==4.1.0
+pytz==2018.3
+redis==2.10.6
+urllib3==1.22
+vine==1.1.4
